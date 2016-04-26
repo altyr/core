@@ -9,15 +9,17 @@
 
 namespace Test\Session;
 
+use OC\Session\Memory;
+
 class Memory extends Session {
 
 	protected function setUp() {
 		parent::setUp();
-		$this->instance = new \OC\Session\Memory($this->getUniqueID());
+		$this->instance = new Memory($this->getUniqueID());
 	}
 
 	/**
-	 * @expectedException \Exception
+	 * @expectedException OCP\SessionNotAvailableException
 	 */
 	public function testThrowsExceptionOnGetId() {
 		$this->instance->getId();
